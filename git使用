@@ -1,0 +1,59 @@
+git init 项目初始化
+git clone 从远程克隆一个项目到本地
+git status 查看当前库状态
+git add 将文件添加到暂存区
+touch .gitignore 在linux下创建一个隐藏文件(这个文件中填写的内容会自动隐藏不显示)   显示使用ls -A
+git commit -m 'first commit'  把暂存区的代码放到本地仓库
+git remote add origin git@github.com:zh-usegithub/cloude_notes.git  推送代码至git@github.com:zh-usegithub/cloude_notes.git
+git push -u origin main 把本地库的内容推送到远程库(origin:远程库连接源 main:远程库分支)
+git pull 把远程仓库更新的内容拉取到本地仓库
+git reset 把代码重置
+git branch -l 列出分支列表
+git branch -a 列出分支的详细信息
+git branch dev 分支管理（不同人的代码在不同的分支上,这里是创建dev分支，不同分支的代码是隔离的）
+git checkout -b dev 创建分支的其他方法，这样创建出来的分支是不用手动切换到当前分支的，上面使用branch切换分支需要手动切换
+git branch -d dev 删除分支（这里是删除dev分支）
+git checkout dev 切换到其他分支(这里是切换到dev分支)
+git log 查看提交历史
+git diff  main master 查看分支main与master的差异
+git difftool --tool=vimdiff  直观查看分支差异
+git merge main 把分支main的代码合并到当前处于的master分支上来
+ssh-keygen 生成ssh密钥（公钥放置github服务器上面保存）
+
+使用git 进行代码的回滚：
+1.git log 查看提交历史,历史信息如下所示：
+commit d279bd27dc64307c69426cd88edffde529370f79 (HEAD -> master, origin/master)
+Author: zh-usegithub <1499671569@qq.com>
+Date:   Thu May 5 15:00:12 2022 +0800
+
+    git文件 update
+:...skipping...
+commit d279bd27dc64307c69426cd88edffde529370f79 (HEAD -> master, origin/master)
+Author: zh-usegithub <1499671569@qq.com>
+Date:   Thu May 5 15:00:12 2022 +0800
+
+    git文件 update
+
+:...skipping...
+commit d279bd27dc64307c69426cd88edffde529370f79 (HEAD -> master, origin/master)
+Author: zh-usegithub <1499671569@qq.com>
+Date:   Thu May 5 15:00:12 2022 +0800
+
+    git文件 update
+
+commit 4f3a87b84b849b7f183b2d005b90286baab29539
+:...skipping...
+commit d279bd27dc64307c69426cd88edffde529370f79 (HEAD -> master, origin/master)
+Author: zh-usegithub <1499671569@qq.com>
+Date:   Thu May 5 15:00:12 2022 +0800
+
+    git文件 update
+
+commit 4f3a87b84b849b7f183b2d005b90286baab29539
+Author: zh-usegithub <1499671569@qq.com>
+Date:   Wed May 4 23:14:11 2022 +0800
+
+    first commit
+2.选择一个需要回滚的commit-ID,例如4f3a87b84b849b7f183b2d005b90286baab29539,git checkout 4f3a87b84b849b7f183b2d005b90286baab29539
+这样就回滚到了第一次提交的代码处
+
